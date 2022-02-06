@@ -4,7 +4,7 @@ MAP670C Reinforcement Learning - Course assignments
 # How to install ?
 In order to run this project here are few steps you have to complete
 
-**Step 0** : Open you favorite terminal
+**Step 0** : Open your favorite terminal
 
 **Step 1** : Clone the repo
 ```
