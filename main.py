@@ -1,4 +1,5 @@
 import gym
+import torch as th
 import os
 from stable_baselines3 import SAC, DDPG, PPO
 from stable_baselines3.common.monitor import Monitor
@@ -31,11 +32,11 @@ sac_agent.learn(total_timesteps=TOTAL_TIMESTEPS, callback=callback)
 
 """
 Double Deterministic Policy Gradient 
-- MLP Policy
+- Custom MLP Policy with 2 layers of 256 units and ReLU activation
 - Default parameters
 """
 
-# Create log dir
+Create log dir
 log_dir = os.path.join(BENCHMARKS_DIR, "monitor_ddpg_agent/")
 os.makedirs(log_dir, exist_ok=True)
 
@@ -45,13 +46,13 @@ env = Monitor(env, log_dir)
 callback = SaveOnBestTrainingRewardCallback(check_freq=CHECK_FREQ, log_dir=log_dir)
 
 # Define and train the agent
-sac_agent = DDPG("MlpPolicy", env, verbose=1)
-sac_agent.learn(total_timesteps=TOTAL_TIMESTEPS, callback=callback)
+ddpg_agent = DDPG("MlpPolicy", env, policy_kwargs=dict(activation_fn=th.nn.ReLU, net_arch=[256,256]), verbose=1)
+ddpg_agent.learn(total_timesteps=TOTAL_TIMESTEPS, callback=callback)
 
 
 """
 Proximal Policy Optimization 
-- MLP Policy
+- Custom MLP Policy with 2 layers of 256 units and ReLU activation
 - Default parameters
 """
 
@@ -65,8 +66,8 @@ env = Monitor(env, log_dir)
 callback = SaveOnBestTrainingRewardCallback(check_freq=CHECK_FREQ, log_dir=log_dir)
 
 # Define and train the agent
-sac_agent = PPO("MlpPolicy", env, verbose=1)
-sac_agent.learn(total_timesteps=TOTAL_TIMESTEPS, callback=callback)
+ppo_agent = PPO("MlpPolicy", env, policy_kwargs=dict(activation_fn=th.nn.ReLU, net_arch=[dict(pi=[256, 256], vf=[256, 256])]), verbose=1)
+ppo_agent.learn(total_timesteps=TOTAL_TIMESTEPS, callback=callback)
 
 
 """
