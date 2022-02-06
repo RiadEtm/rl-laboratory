@@ -5,6 +5,7 @@ import numpy as np
 
 
 class SaveOnBestTrainingRewardCallback(BaseCallback):
+    # https://stable-baselines3.readthedocs.io/en/master/guide/examples.html#using-callback-monitoring-training
     def __init__(self, check_freq: int, log_dir: str, verbose: int = 1):
         super(SaveOnBestTrainingRewardCallback, self).__init__(verbose)
         self.check_freq = check_freq
@@ -29,7 +30,7 @@ class SaveOnBestTrainingRewardCallback(BaseCallback):
                     print(f"Num timesteps: {self.num_timesteps}")
                     print(f"Best mean reward: {self.best_mean_reward:.2f} - Last mean reward per episode: {mean_reward:.2f}")
 
-                # New best model, saving the agent here
+                # New best model, save the agent here
                 if mean_reward > self.best_mean_reward:
                     self.best_mean_reward = mean_reward
                     # Example for saving best model
