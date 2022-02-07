@@ -5,17 +5,18 @@ from stable_baselines3 import SAC, DDPG, PPO
 from stable_baselines3.common.monitor import Monitor
 from imports.train_monitoring import SaveOnBestTrainingRewardCallback
 
-CHECK_FREQ = 10
-TOTAL_TIMESTEPS = 15000
+CHECK_FREQ = 1500
+TOTAL_TIMESTEPS = 500000
 BENCHMARKS_DIR = "benchmarks"
-ENV_TYPE = "Pendulum-v0"
+ENV_TYPE = "BipedalWalker-v3"
 
 """
 Soft Actor Critic 
 - MLP Policy
-- Default parameters
+- Paper parameters
 """
 
+print("RUN : Soft Actor Critic")
 # Create log dir
 log_dir = os.path.join(BENCHMARKS_DIR, "monitor_sac_agent/")
 os.makedirs(log_dir, exist_ok=True)
@@ -33,10 +34,11 @@ sac_agent.learn(total_timesteps=TOTAL_TIMESTEPS, callback=callback)
 """
 Double Deterministic Policy Gradient 
 - Custom MLP Policy with 2 layers of 256 units and ReLU activation
-- Default parameters
+- Paper parameters
 """
 
-Create log dir
+print("RUN : Double Deterministic Policy Gradient")
+# Create log dir
 log_dir = os.path.join(BENCHMARKS_DIR, "monitor_ddpg_agent/")
 os.makedirs(log_dir, exist_ok=True)
 
@@ -53,9 +55,10 @@ ddpg_agent.learn(total_timesteps=TOTAL_TIMESTEPS, callback=callback)
 """
 Proximal Policy Optimization 
 - Custom MLP Policy with 2 layers of 256 units and ReLU activation
-- Default parameters
+- Paper parameters
 """
 
+print("RUN : Proximal Policy Optimization")
 # Create log dir
 log_dir = os.path.join(BENCHMARKS_DIR, "monitor_ppo_agent/")
 os.makedirs(log_dir, exist_ok=True)

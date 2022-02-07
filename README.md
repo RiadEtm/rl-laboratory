@@ -49,3 +49,12 @@ $ python ./benchmark_results.py
 
 # First results
 ![First results](benchmarks/first_results.png)
+
+Our first Soft Actor Critic best model trained on BipedalWalker-v3 with `total_timesteps = 500000`. 
+![SAC](gifs/sac_agent.gif)
+
+Our first Double Deterministic Policy Gradient best model trained on BipedalWalker-v3 with `total_timesteps = 500000`.
+![DDPG](gifs/ddpg_agent.gif)
+
+Our first Proximal Policy Optimization  best model trained on BipedalWalker-v3 with `total_timesteps = 500000`.
+![PPO](gifs/ppo_agent.gif)
