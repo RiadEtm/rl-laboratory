@@ -6,3 +6,4 @@ stable-baselines3==1.4.0
 torch~=1.10.2
 imageio~=2.14.1
 Pillow~=9.0.1
+seaborn~=0.11.2

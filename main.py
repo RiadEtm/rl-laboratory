@@ -6,7 +6,7 @@ from stable_baselines3.common.monitor import Monitor
 from imports.train_monitoring import SaveOnBestTrainingRewardCallback
 
 CHECK_FREQ = 1500
-TOTAL_TIMESTEPS = 500000
+TOTAL_TIMESTEPS = 800000
 BENCHMARKS_DIR = "benchmarks"
 ENV_TYPE = "BipedalWalker-v3"
 
