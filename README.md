@@ -47,7 +47,7 @@ And then, to compute the final graph :
 $ python ./benchmark_results.py
 ```
 
-# First results
+# Results
 ![First results](benchmarks/first_results.png)
 
 Our first Soft Actor Critic best model trained on BipedalWalker-v3 with `total_timesteps = 500000`. 
